@@ -18,8 +18,6 @@ The app lets the user add, edit, delete, complete, search, and filter sprint tas
 * CSS
 * Git and GitHub
 
-The project uses `lucide-react` for interface icons.
-
 ## Useful Websites
 
 * [React Documentation](https://react.dev/)
