@@ -1,18 +1,4 @@
 import { useMemo, useState } from "react";
-import {
-  CalendarDays,
-  Check,
-  Circle,
-  Clock,
-  Edit3,
-  Filter,
-  Github,
-  ListPlus,
-  Save,
-  Search,
-  Trash2,
-  X,
-} from "lucide-react";
 
 const STORAGE_KEY = "cse310-study-sprint-planner";
 const SPRINT_GOAL_HOURS = 20;
@@ -190,16 +176,16 @@ function App() {
             <h1>Study Sprint Planner</h1>
           </div>
           <a className="repo-link" href="https://github.com/bbrain777" target="_blank" rel="noreferrer">
-            <Github size={18} aria-hidden="true" />
+            <span aria-hidden="true">GH</span>
             GitHub
           </a>
         </header>
 
         <section className="summary-grid" aria-label="Sprint summary">
-          <SummaryCard icon={<Clock />} label="Planned Hours" value={summary.totalHours.toFixed(1)} />
-          <SummaryCard icon={<Check />} label="Completed Hours" value={summary.completedHours.toFixed(1)} />
-          <SummaryCard icon={<CalendarDays />} label="Sprint Progress" value={`${summary.progressPercent}%`} />
-          <SummaryCard icon={<ListPlus />} label="Open Tasks" value={summary.plannedCount + summary.activeCount} />
+          <SummaryCard icon="HR" label="Planned Hours" value={summary.totalHours.toFixed(1)} />
+          <SummaryCard icon="OK" label="Completed Hours" value={summary.completedHours.toFixed(1)} />
+          <SummaryCard icon="%" label="Sprint Progress" value={`${summary.progressPercent}%`} />
+          <SummaryCard icon="TO" label="Open Tasks" value={summary.plannedCount + summary.activeCount} />
         </section>
 
         <section className="progress-panel">
@@ -268,12 +254,12 @@ function App() {
 
               <div className="button-row">
                 <button type="submit" className="primary-button">
-                  {editingId ? <Save size={18} /> : <ListPlus size={18} />}
+                  <span aria-hidden="true">{editingId ? "SV" : "AD"}</span>
                   {editingId ? "Save" : "Add"}
                 </button>
                 {editingId && (
                   <button type="button" className="ghost-button" onClick={cancelEdit} aria-label="Cancel edit">
-                    <X size={18} />
+                    <span aria-hidden="true">X</span>
                     Cancel
                   </button>
                 )}
@@ -284,7 +270,7 @@ function App() {
           <section className="task-board" aria-label="Sprint tasks">
             <div className="board-toolbar">
               <div className="search-box">
-                <Search size={18} aria-hidden="true" />
+                <span aria-hidden="true">Search</span>
                 <input
                   value={searchTerm}
                   onChange={(event) => setSearchTerm(event.target.value)}
@@ -292,7 +278,7 @@ function App() {
                 />
               </div>
               <div className="filter-row">
-                <Filter size={18} aria-hidden="true" />
+                <span aria-hidden="true">Filter</span>
                 <select value={categoryFilter} onChange={(event) => setCategoryFilter(event.target.value)}>
                   <option>All</option>
                   {categories.map((category) => (
@@ -320,7 +306,7 @@ function App() {
                       onClick={() => toggleComplete(task.id)}
                       aria-label={task.status === "done" ? "Mark task active" : "Mark task complete"}
                     >
-                      {task.status === "done" ? <Check size={18} /> : <Circle size={18} />}
+                      {task.status === "done" ? "OK" : ""}
                     </button>
                     <div className="task-details">
                       <div className="task-heading">
@@ -336,10 +322,10 @@ function App() {
                     </div>
                     <div className="card-actions">
                       <button type="button" onClick={() => startEdit(task)} aria-label={`Edit ${task.title}`}>
-                        <Edit3 size={17} />
+                        Edit
                       </button>
                       <button type="button" onClick={() => removeTask(task.id)} aria-label={`Delete ${task.title}`}>
-                        <Trash2 size={17} />
+                        Del
                       </button>
                     </div>
                   </article>

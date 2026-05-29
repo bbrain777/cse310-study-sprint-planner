@@ -130,11 +130,6 @@ h2 {
   background: #246b76;
 }
 
-.summary-icon svg {
-  width: 22px;
-  height: 22px;
-}
-
 .summary-card p {
   margin: 0 0 4px;
   color: #627084;
@@ -307,6 +302,8 @@ textarea {
   border-radius: 8px;
   color: #246b76;
   background: #eef6f7;
+  font-size: 0.75rem;
+  font-weight: 800;
 }
 
 .task-heading {
